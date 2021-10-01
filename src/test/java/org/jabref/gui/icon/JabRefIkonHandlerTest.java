@@ -10,14 +10,14 @@ public class JabRefIkonHandlerTest {
     JabRefIkonHandler jabRefIkonHandler = new JabRefIkonHandler();
 
     @Test
-    void supports() {
+    void supportsTest() {
         assertEquals(false, jabRefIkonHandler.supports(null));
         assertEquals(false, jabRefIkonHandler.supports("jab"));
         assertEquals(true, jabRefIkonHandler.supports("jab-123"));
     }
 
     @Test
-    void resolve() {
+    void resolveTest() {
         String icon = jabRefIkonHandler.resolve("jab-copy").toString();
 
         assertEquals("COPY", icon);
@@ -27,19 +27,19 @@ public class JabRefIkonHandlerTest {
     }
 
     @Test
-    void getFontResource() {
+    void getFontResourceTest() {
         String path = jabRefIkonHandler.getFontResource().toString();
         assertEquals(true, path.endsWith("JabRefMaterialDesign.ttf"));
     }
 
     @Test
-    void getFontResourceAsStream() {
+    void getFontResourceAsStreamTest() {
         String font = jabRefIkonHandler.getFontResourceAsStream().toString();
         assertEquals("sun.nio.ch.ChannelInputStream@61e45f87", font);
     }
 
     @Test
-    void getFontFamily() {
+    void getFontFamilyTest() {
         assertEquals("JabRefMaterialDesign", jabRefIkonHandler.getFontFamily());
     }
 }
