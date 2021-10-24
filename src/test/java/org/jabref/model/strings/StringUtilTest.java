@@ -38,6 +38,7 @@ class StringUtilTest {
     @Test
     void testQuoteSimple() {
         assertEquals("a::", StringUtil.quote("a:", "", ':'));
+        assertEquals("", StringUtil.quote(null, "", ':'));
     }
 
     @Test
@@ -96,6 +97,9 @@ class StringUtilTest {
         assertEquals("ABC", StringUtil.removeBracesAroundCapitals("{{ABC}}"));
         assertEquals("{abc}", StringUtil.removeBracesAroundCapitals("{abc}"));
         assertEquals("ABCDEF", StringUtil.removeBracesAroundCapitals("{ABC}{DEF}"));
+        assertThrows(NullPointerException.class, () -> {
+            StringUtil.removeBracesAroundCapitals(null);
+        });
     }
 
     @Test
@@ -148,7 +152,8 @@ class StringUtilTest {
 
     @Test
     void testGetPart() {
-        // Should be added
+        assertEquals("oo", StringUtil.getPart("foo", 0, false));
+        assertEquals("", StringUtil.getPart("foo", 2, true));
     }
 
     @Test
